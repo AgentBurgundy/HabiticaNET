@@ -9,6 +9,7 @@ namespace HabiticaNET.Tests
     public class AuthenticationTests : BaseTest
     {
         [Test]
+        [Category("Authentication")]
         public void CanILogin()
         {
             

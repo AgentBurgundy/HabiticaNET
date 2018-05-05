@@ -18,7 +18,8 @@ namespace HabiticaNET.Http
             if (endpoint == null)
                 throw new ArgumentNullException(nameof(endpoint));
 
-            DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(credentials.EncodedCredentials));
+            DefaultRequestHeaders.Add("x-api-user", credentials.Id);
+            DefaultRequestHeaders.Add("x-api-key", credentials.ApiToken);
 
             HttpResponseMessage response = await GetAsync(endpoint);
             return response;
@@ -29,7 +30,8 @@ namespace HabiticaNET.Http
             if (endpoint == null)
                 throw new ArgumentNullException(nameof(endpoint));
 
-            DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", Convert.ToBase64String(credentials.EncodedCredentials));
+            DefaultRequestHeaders.Add("x-api-user", credentials.Id);
+            DefaultRequestHeaders.Add("x-api-key", credentials.ApiToken);
 
             FormUrlEncodedContent data = new FormUrlEncodedContent(content);
 
