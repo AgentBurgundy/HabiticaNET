@@ -1,9 +1,7 @@
 ﻿using HabiticaNET.Core;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 
 namespace HabiticaNET.Tests
 {
@@ -37,6 +35,16 @@ namespace HabiticaNET.Tests
             HttpResponseMessage response = Habitica.UpdatePassword(TestPassword, "testingpassword-new1234");
 
             Console.WriteLine(response);
+
+            Assert.That(response.IsSuccessStatusCode);
+        }
+
+        [Test]        
+        public void CanIGetUserInfo()
+        {
+            HttpResponseMessage response = Habitica.GetUserInfo();
+
+            Console.WriteLine(response.Content.ReadAsStringAsync().Result);
 
             Assert.That(response.IsSuccessStatusCode);
         }

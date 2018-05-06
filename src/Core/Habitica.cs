@@ -12,6 +12,15 @@ namespace HabiticaNET.Core
         public static UserCredentials CurrentAuthenticatedCredentials = default(UserCredentials);
         public static Client CurrentClient = new Client(new NoProxyHandler());
 
+        #region User Info
+
+        public static HttpResponseMessage GetUserInfo()
+        {
+            return UserInfo.GetUserInfo(CurrentClient, CurrentAuthenticatedCredentials);
+        }
+
+        #endregion
+
         public static HttpResponseMessage Login(string username, string password)
         {
             return Authentication.Login(CurrentClient, username, password, out CurrentAuthenticatedCredentials);
