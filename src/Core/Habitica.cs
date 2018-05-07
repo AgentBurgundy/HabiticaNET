@@ -21,6 +21,11 @@ namespace HabiticaNET.Core
 
         #endregion
 
+        public static HttpResponseMessage RegisterNewUser(string username, string password, string email)
+        {
+            return Authentication.RegisterNewAccount(CurrentClient, username, password, email, out CurrentAuthenticatedCredentials);
+        }
+
         public static HttpResponseMessage Login(string username, string password)
         {
             return Authentication.Login(CurrentClient, username, password, out CurrentAuthenticatedCredentials);
